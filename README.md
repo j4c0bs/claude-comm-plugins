@@ -61,6 +61,31 @@ claude plugin install intercom@claude-comm-plugins
 
 ---
 
+### 🎤 [Voice Updates](./plugins/voice-updates/)
+
+**Category**: Productivity
+**Version**: 1.0.0
+**Platform**: macOS
+
+Provide voice updates during tasks using macOS `say` command for proactive communication. Enables voice notifications for progress, findings, and attention requests without blocking execution.
+
+**Features**:
+- Proactive voice updates during work
+- Intelligent voice selection (respects preferences + context)
+- Notable moments only (not routine operations)
+- Non-blocking background execution
+- Natural language messages designed for speech
+- Context-aware voice selection (progress/emphasis/attention)
+
+**Installation**:
+```bash
+claude plugin install voice-updates@claude-comm-plugins
+```
+
+[Full Documentation →](./plugins/voice-updates/README.md)
+
+---
+
 ## Repository Structure
 
 ```
@@ -68,11 +93,16 @@ claude-comm-plugins/
 ├── .claude-plugin/
 │   └── marketplace.json         # Marketplace configuration
 ├── plugins/
-│   └── intercom/                # Intercom plugin
+│   ├── intercom/                # Intercom plugin
+│   │   ├── .claude-plugin/
+│   │   │   └── plugin.json
+│   │   ├── skills/
+│   │   ├── commands/
+│   │   └── README.md
+│   └── voice-updates/           # Voice Updates plugin
 │       ├── .claude-plugin/
 │       │   └── plugin.json
 │       ├── skills/
-│       ├── commands/
 │       └── README.md
 ├── README.md                    # This file
 └── .gitignore

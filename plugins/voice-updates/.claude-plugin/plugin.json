@@ -1,0 +1,12 @@
+{
+  "name": "voice-updates",
+  "version": "1.0.0",
+  "description": "Provide voice updates during tasks using macOS say command for proactive communication",
+  "author": {
+    "name": "Jeremy Jacobs"
+  },
+  "keywords": ["voice", "audio", "notifications", "macos", "accessibility"],
+  "platform": {
+    "os": ["darwin"]
+  }
+}
