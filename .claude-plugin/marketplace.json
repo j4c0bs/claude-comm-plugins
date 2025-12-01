@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-comm-plugins",
+  "version": "1.0.0",
+  "description": "Communication and collaboration tools for Claude Code multi-agent workflows",
+  "owner": {
+    "name": "Jeremy Jacobs",
+    "email": "jeremy@example.com"
+  },
+  "plugins": [
+    {
+      "name": "intercom",
+      "description": "Enable Claude Code agents in separate repositories to communicate via CLI invocation",
+      "version": "1.0.0",
+      "author": {
+        "name": "Jeremy Jacobs"
+      },
+      "source": "./plugins/intercom",
+      "category": "productivity"
+    }
+  ]
+}

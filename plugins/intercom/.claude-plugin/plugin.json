@@ -1,0 +1,9 @@
+{
+  "name": "intercom",
+  "version": "1.0.0",
+  "description": "Enable Claude Code agents in separate repositories to communicate via CLI invocation",
+  "author": {
+    "name": "Jeremy Jacobs"
+  },
+  "keywords": ["communication", "multi-agent", "cross-repo", "cli"]
+}
