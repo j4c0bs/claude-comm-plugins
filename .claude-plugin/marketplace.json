@@ -17,6 +17,16 @@
       },
       "source": "./plugins/intercom",
       "category": "productivity"
+    },
+    {
+      "name": "speak-to-me",
+      "description": "Give Claude a voice using macOS say command for proactive communication during work",
+      "version": "1.0.0",
+      "author": {
+        "name": "Jeremy Jacobs"
+      },
+      "source": "./plugins/speak-to-me",
+      "category": "productivity"
     }
   ]
 }

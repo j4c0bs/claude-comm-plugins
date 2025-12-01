@@ -1,0 +1,12 @@
+{
+  "name": "speak-to-me",
+  "version": "1.0.0",
+  "description": "Give Claude a voice using macOS say command for proactive communication during work",
+  "author": {
+    "name": "Jeremy Jacobs"
+  },
+  "keywords": ["voice", "audio", "notifications", "macos", "accessibility"],
+  "platform": {
+    "os": ["darwin"]
+  }
+}
