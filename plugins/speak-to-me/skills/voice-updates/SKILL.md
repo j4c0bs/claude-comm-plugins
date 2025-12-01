@@ -75,21 +75,9 @@ When no user preference is found, select voice based on message context:
 
 ### Available Voices
 
-**Recommended realistic voices** (prefer these):
-- **Samantha** - Friendly, natural (excellent default)
-- **Fred** - Deep, authoritative (good for emphasis)
-- **Albert** - Distinguished, clear (good for attention)
-- **Ralph** - Mature, professional
-- **Kathy** - Warm, approachable
-- **Eddy** - Natural, modern
-- **Flo** - Clear, professional
-- **Reed** - Neutral, informative
-- **Rocko** - Dynamic, engaging
-- **Sandy** - Friendly, conversational
-- **Shelley** - Professional, clear
-
-**Avoid novelty voices** (unless user explicitly requests):
-- Good News, Bad News, Whisper, Bells, Boing, Bubbles, Bahh, Cellos, Jester, Organ, Trinoids, Zarvox
+**Context-based voices**: Samantha (progress), Fred (emphasis), Albert (attention)
+**Other recommended voices**: Ralph, Kathy, Eddy, Flo, Reed, Rocko, Sandy, Shelley
+**Avoid novelty voices**: Good News, Bad News, Whisper, Bells, Boing, Bubbles, etc.
 
 ## Content Guidelines
 
@@ -101,201 +89,55 @@ Voice messages must be:
 3. **Clear**: Simple, direct communication
 4. **Vocalizable**: No lists, code blocks, or special characters
 
-### Content Validation
+### Examples
 
-Before using voice, verify:
-- [ ] Message is under 30 words
-- [ ] Content is naturally spoken language
-- [ ] No lists, bullet points, or code blocks
-- [ ] No file paths or technical syntax
-- [ ] This is a notable moment worth vocalizing
-- [ ] Message adds value without disrupting flow
-
-### Valid Examples
-
-✅ **Good voice messages**:
+✅ **Good**:
 - "Build completed successfully. All tests passed."
 - "I found the authentication bug in the login module."
-- "Working through the test suite. About halfway done."
 - "I need your input on the database schema before continuing."
-- "Warning: deployment script has a critical error."
-- "Refactoring complete. Ready for your review."
 
-❌ **Bad voice messages**:
+❌ **Bad**:
 - "Found files: config.json, package.json, tsconfig.json" *(list)*
 - "Error on line 42: TypeError: Cannot read property" *(too technical)*
-- "Installing dependencies with npm install" *(too routine)*
-- "Searching files... Found match... Opening file... Reading" *(too verbose)*
-- Reading code snippets or file contents *(not vocalizable)*
 
-## Implementation Workflow
+## Implementation
 
-### Step 1: Determine Voice Selection
+**Voice selection workflow**:
+1. Check chat context for explicit voice request
+2. If none, read CLAUDE.md and search for voice preference patterns
+3. If not found, select based on context (progress→Samantha, emphasis→Fred, attention→Albert)
+4. Verify voice exists, fallback to Samantha if not
+5. Execute command below
 
-If the voice is not explicitly defined, search for it in CLAUDE.md.
-
-```bash
-# 1. Check if user specified voice in current chat context
-# 2. If not specified in chat, read CLAUDE.md
-if [ -f "CLAUDE.md" ]; then
-    # Search for voice preference patterns:
-    # - "voice: VoiceName"
-    # - "Preferred voice: VoiceName"
-    # - "Use VoiceName voice"
-    # Extract voice name if found
-fi
-
-# 3. If no preference found, determine context
-if [[ message contains discovery/error/warning ]]; then
-    CONTEXT="emphasis"
-    DEFAULT_VOICE="Fred"
-elif [[ message requests user input ]]; then
-    CONTEXT="attention"
-    DEFAULT_VOICE="Albert"
-else
-    CONTEXT="progress"
-    DEFAULT_VOICE="Samantha"
-fi
-```
-
-### Step 2: Validate Voice Exists
+**Execute voice command**:
 
 ```bash
-# Verify the selected voice is available
-if say -v "$VOICE" "" 2>&1 | grep -q "not found"; then
-    # Voice not available, fall back to Samantha
-    VOICE="Samantha"
-fi
-```
-
-### Step 3: Execute Voice Command
-
-```bash
-# Use say command directly (no bash helper script needed)
 say -v "$VOICE" "$MESSAGE" 2>/dev/null &
 ```
 
-**Critical implementation notes**:
-- Use `&` to run in background (non-blocking)
-- Redirect errors to `/dev/null` (graceful degradation)
-- Keep message under 100 words
-- No bash variable capture needed
-- Can be called during thinking or tool use
+**Notes**: Use `&` for background execution (non-blocking). Redirect errors to `/dev/null` for graceful degradation. Can be called during thinking or tool use.
 
 ## Error Handling
 
-### Voice Not Available
-
-```bash
-# Fallback to default if voice doesn't exist
-if say -v "$VOICE" "" 2>&1 | grep -q "not found"; then
-    VOICE="Samantha"
-fi
-```
-
-### Say Command Fails
-
-```bash
-# Suppress errors, never block execution
-say -v "$VOICE" "$MESSAGE" 2>/dev/null &
-# Continue with work regardless of voice success/failure
-```
-
-### Platform Check
-
-```bash
-# Verify macOS platform
-if [[ "$OSTYPE" != "darwin"* ]]; then
-    # Skill not available on this platform
-    # Exit gracefully without attempting voice
-fi
-```
-
-### CLAUDE.md Parse Error
-
-If CLAUDE.md exists but can't be parsed:
-- Use context-based defaults
-- Don't block execution on parse errors
-- Fall back gracefully
+All failures degrade gracefully without blocking execution:
+- Voice not found → fallback to Samantha
+- Say command fails → suppress error with `2>/dev/null`
+- macOS unavailable → check `$OSTYPE`, skip voice gracefully
+- CLAUDE.md parse error → use context-based default
 
 ## Best Practices
 
-### Frequency Guidelines
-
-Balance being helpful with not being intrusive:
-
-- **Long tasks** (10+ minutes): Updates every 1-2 minutes or at major milestones
-- **Medium tasks** (3-10 minutes): Updates at start, middle, completion
-- **Short tasks** (< 3 minutes): Only start/completion or critical findings
-- **Interactive tasks**: Attention requests when blocking on decisions
-
-### Timing Considerations
-
-- **Start of task**: Optional brief confirmation ("Starting the build")
-- **During work**: Major milestones or discoveries only
-- **Completion**: Success/failure summary ("Build completed successfully")
-- **Blocking**: Immediate attention request if user input needed
-
-### User Experience
-
-Voice updates should:
-- **Complement, not replace** written output in chat
-- **Inform without disrupting** user's focus on other work
-- **Provide value** beyond what's visible in terminal
-- **Enable multitasking** - user can hear updates while doing other work
-
-### Content Tone
-
-Match tone to context:
-- **Progress updates**: Neutral, informative ("Working through test suite")
-- **Findings**: Clear, specific ("Found the bug in session handler")
-- **Attention requests**: Polite, clear ("I need your input on the schema")
-- **Errors**: Calm, factual ("Test suite is failing, investigating now")
+- **Frequency**: Long tasks (~1-2 min intervals or major milestones), short tasks (start/end only), interactive tasks (when blocked)
+- **Tone**: Match context - neutral for progress, clear for findings, polite for attention, calm for errors
+- **Value**: Complement written output, enable multitasking, inform without disrupting focus
 
 ## Example Session
 
 ```
 User: "Keep me updated with voice while you refactor the authentication module"
 
-Claude: [Activates voice-updates skill]
-        [Checks for voice preference in CLAUDE.md - finds "voice: Samantha"]
-
-        Working on refactoring...
-        [Voice: "Starting authentication module refactoring"]
-
-        ... continues work ...
-        [Voice: "Halfway through. Moving user session logic to new module"]
-
-        ... discovers issue ...
-        [Voice (using Fred for emphasis): "Found a security issue in token validation"]
-
-        ... completes work ...
-        [Voice: "Refactoring complete. All tests passing"]
+[Voice: "Starting authentication refactoring"]
+[Voice: "Halfway through. Moving session logic to new module"]
+[Voice (Fred): "Found security issue in token validation"]
+[Voice: "Refactoring complete. All tests passing"]
 ```
-
-## Platform Requirements
-
-This skill requires macOS (darwin platform). The `say` command is macOS-specific.
-
-On non-macOS platforms:
-- Skill will not activate
-- No error messages (graceful degradation)
-- Work continues normally without voice
-
-## Integration Notes
-
-Voice updates work seamlessly with:
-- Background tool execution
-- Long-running tasks
-- Multi-step workflows
-- Thinking/planning phases
-
-Voice can be used:
-- During thinking (doesn't stop thought process)
-- During tool use (runs in background)
-- Between steps (natural update points)
-
-Voice should NOT:
-- Block any execution
-- Wait for completion confirmation
-- Require user acknowledgment
