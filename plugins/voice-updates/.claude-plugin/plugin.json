@@ -1,7 +1,7 @@
 {
-  "name": "speak-to-me",
+  "name": "voice-updates",
   "version": "1.0.0",
-  "description": "Give Claude a voice using macOS say command for proactive communication during work",
+  "description": "Provide voice updates during tasks using macOS say command for proactive communication",
   "author": {
     "name": "Jeremy Jacobs"
   },

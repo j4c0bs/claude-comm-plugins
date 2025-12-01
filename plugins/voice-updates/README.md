@@ -1,10 +1,10 @@
-# Speak-to-Me Plugin for Claude Code
+# Voice Updates Plugin for Claude Code
 
-Give Claude a voice! This plugin uses macOS's `say` command to enable proactive voice communication during work.
+Provide voice updates during tasks! This plugin uses macOS's `say` command to enable proactive voice communication during work.
 
 ## Overview
 
-Claude Code is powerful, but sometimes you're focused on other tasks while Claude works through complex operations. The Speak-to-Me plugin empowers Claude to communicate with you via voice during work - providing progress updates, sharing important findings, or requesting attention - all without stopping execution.
+Claude Code is powerful, but sometimes you're focused on other tasks while Claude works through complex operations. The Voice Updates plugin empowers Claude to communicate with you via voice during work - providing progress updates, sharing important findings, or requesting attention - all without stopping execution.
 
 ## Features
 
@@ -21,10 +21,10 @@ Claude Code is powerful, but sometimes you're focused on other tasks while Claud
 
 ```bash
 # Install from marketplace
-claude plugin install speak-to-me@claude-comm-plugins
+claude plugin install voice-updates@claude-comm-plugins
 
 # Or add locally
-claude plugin add /path/to/claude-comm-plugins/plugins/speak-to-me
+claude plugin add /path/to/claude-comm-plugins/plugins/voice-updates
 ```
 
 ### Using the Plugin

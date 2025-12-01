@@ -19,13 +19,13 @@
       "category": "productivity"
     },
     {
-      "name": "speak-to-me",
-      "description": "Give Claude a voice using macOS say command for proactive communication during work",
+      "name": "voice-updates",
+      "description": "Provide voice updates during tasks using macOS say command for proactive communication",
       "version": "1.0.0",
       "author": {
         "name": "Jeremy Jacobs"
       },
-      "source": "./plugins/speak-to-me",
+      "source": "./plugins/voice-updates",
       "category": "productivity"
     }
   ]

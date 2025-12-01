@@ -61,16 +61,16 @@ claude plugin install intercom@claude-comm-plugins
 
 ---
 
-### 🎤 [Speak-to-Me](./plugins/speak-to-me/)
+### 🎤 [Voice Updates](./plugins/voice-updates/)
 
 **Category**: Productivity
 **Version**: 1.0.0
 **Platform**: macOS
 
-Give Claude a voice using macOS `say` command for proactive communication during work. Enables voice updates for progress, findings, and attention requests without blocking execution.
+Provide voice updates during tasks using macOS `say` command for proactive communication. Enables voice notifications for progress, findings, and attention requests without blocking execution.
 
 **Features**:
-- Proactive voice communication during work
+- Proactive voice updates during work
 - Intelligent voice selection (respects preferences + context)
 - Notable moments only (not routine operations)
 - Non-blocking background execution
@@ -79,10 +79,10 @@ Give Claude a voice using macOS `say` command for proactive communication during
 
 **Installation**:
 ```bash
-claude plugin install speak-to-me@claude-comm-plugins
+claude plugin install voice-updates@claude-comm-plugins
 ```
 
-[Full Documentation →](./plugins/speak-to-me/README.md)
+[Full Documentation →](./plugins/voice-updates/README.md)
 
 ---
 
@@ -99,7 +99,7 @@ claude-comm-plugins/
 │   │   ├── skills/
 │   │   ├── commands/
 │   │   └── README.md
-│   └── speak-to-me/             # Speak-to-Me plugin
+│   └── voice-updates/           # Voice Updates plugin
 │       ├── .claude-plugin/
 │       │   └── plugin.json
 │       ├── skills/
