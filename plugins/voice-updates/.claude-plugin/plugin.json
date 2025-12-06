@@ -5,8 +5,5 @@
   "author": {
     "name": "Jeremy Jacobs"
   },
-  "keywords": ["voice", "audio", "notifications", "macos", "accessibility"],
-  "platform": {
-    "os": ["darwin"]
-  }
+  "keywords": ["voice", "audio", "notifications", "macos", "accessibility"]
 }
