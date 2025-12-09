@@ -43,12 +43,12 @@ claude plugin install intercom@claude-comm-plugins
 **Category**: Productivity
 **Version**: 1.0.0
 
-Enable Claude Code agents in separate repositories to communicate via CLI invocation. Bypasses the `--add-dir` limitation by invoking Claude Code directly in target repositories.
+Enable Claude Code agents in separate repositories to communicate via CLI invocation. Bypasses `--add-dir` limitations (access to agents and skills) by invoking Claude Code directly in target repositories.
 
 **Features**:
 - Cross-repository agent communication
 - Automatic session state management
-- Cost-efficient multi-turn conversations (92% savings via prompt caching)
+- Cost-efficient multi-turn conversations (savings via prompt caching)
 - Flexible storage: temporary or project-local
 - Autonomous skill activation + manual `/intercom` command
 
