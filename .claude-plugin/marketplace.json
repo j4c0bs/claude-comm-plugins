@@ -27,6 +27,16 @@
       },
       "source": "./plugins/voice-updates",
       "category": "productivity"
+    },
+    {
+      "name": "apple-notifications",
+      "description": "Send macOS desktop notifications for important events and milestones during execution",
+      "version": "1.0.0",
+      "author": {
+        "name": "Jeremy Jacobs"
+      },
+      "source": "./plugins/apple-notifications",
+      "category": "productivity"
     }
   ]
 }

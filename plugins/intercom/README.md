@@ -341,6 +341,6 @@ MIT
 
 ---
 
-**Version**: 1.0.0
+**Version**: 1.1.0
 **Author**: Jeremy Jacobs
 **Keywords**: communication, multi-agent, cross-repo, cli
