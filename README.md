@@ -41,7 +41,6 @@ claude plugin install intercom@claude-comm-plugins
 ### 🔌 [Intercom](./plugins/intercom/)
 
 **Category**: Productivity
-**Version**: 1.0.0
 
 Enable Claude Code agents in separate repositories to communicate via CLI invocation. Bypasses `--add-dir` limitations (access to agents and skills) by invoking Claude Code directly in target repositories.
 
@@ -64,7 +63,6 @@ claude plugin install intercom@claude-comm-plugins
 ### 🎤 [Voice Updates](./plugins/voice-updates/)
 
 **Category**: Productivity
-**Version**: 1.0.0
 **Platform**: macOS
 
 Provide voice updates during tasks using macOS `say` command for proactive communication. Enables voice notifications for progress, findings, and attention requests without blocking execution.
@@ -89,7 +87,6 @@ claude plugin install voice-updates@claude-comm-plugins
 ### 🔔 [Apple Notifications](./plugins/apple-notifications/)
 
 **Category**: Productivity
-**Version**: 1.0.0
 **Platform**: macOS
 
 Send macOS desktop notifications for important events, milestones, or status updates without interrupting workflow. Surfaces critical information to the macOS Notification Center when users are away or multitasking.
