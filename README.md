@@ -41,14 +41,13 @@ claude plugin install intercom@claude-comm-plugins
 ### 🔌 [Intercom](./plugins/intercom/)
 
 **Category**: Productivity
-**Version**: 1.0.0
 
-Enable Claude Code agents in separate repositories to communicate via CLI invocation. Bypasses the `--add-dir` limitation by invoking Claude Code directly in target repositories.
+Enable Claude Code agents in separate repositories to communicate via CLI invocation. Bypasses `--add-dir` limitations (access to agents and skills) by invoking Claude Code directly in target repositories.
 
 **Features**:
 - Cross-repository agent communication
 - Automatic session state management
-- Cost-efficient multi-turn conversations (92% savings via prompt caching)
+- Cost-efficient multi-turn conversations (savings via prompt caching)
 - Flexible storage: temporary or project-local
 - Autonomous skill activation + manual `/intercom` command
 
@@ -64,7 +63,6 @@ claude plugin install intercom@claude-comm-plugins
 ### 🎤 [Voice Updates](./plugins/voice-updates/)
 
 **Category**: Productivity
-**Version**: 1.0.0
 **Platform**: macOS
 
 Provide voice updates during tasks using macOS `say` command for proactive communication. Enables voice notifications for progress, findings, and attention requests without blocking execution.
@@ -86,6 +84,30 @@ claude plugin install voice-updates@claude-comm-plugins
 
 ---
 
+### 🔔 [Apple Notifications](./plugins/apple-notifications/)
+
+**Category**: Productivity
+**Platform**: macOS
+
+Send macOS desktop notifications for important events, milestones, or status updates without interrupting workflow. Surfaces critical information to the macOS Notification Center when users are away or multitasking.
+
+**Features**:
+- Desktop notifications for long-running operations
+- 5 notification categories (Completion, Discovery, Milestone, Attention, Error)
+- Category-specific sound cues (Glass, Funk, Purr, Basso)
+- Graceful fallback between terminal-notifier and osascript
+- Progressive disclosure documentation for token efficiency
+- Notable moments only (not routine operations)
+
+**Installation**:
+```bash
+claude plugin install apple-notifications@claude-comm-plugins
+```
+
+[Full Documentation →](./plugins/apple-notifications/README.md)
+
+---
+
 ## Repository Structure
 
 ```
@@ -99,7 +121,12 @@ claude-comm-plugins/
 │   │   ├── skills/
 │   │   ├── commands/
 │   │   └── README.md
-│   └── voice-updates/           # Voice Updates plugin
+│   ├── voice-updates/           # Voice Updates plugin
+│   │   ├── .claude-plugin/
+│   │   │   └── plugin.json
+│   │   ├── skills/
+│   │   └── README.md
+│   └── apple-notifications/     # Apple Notifications plugin
 │       ├── .claude-plugin/
 │       │   └── plugin.json
 │       ├── skills/

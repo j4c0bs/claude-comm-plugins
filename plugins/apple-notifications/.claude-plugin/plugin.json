@@ -1,0 +1,9 @@
+{
+  "name": "apple-notifications",
+  "version": "1.0.0",
+  "description": "Send macOS desktop notifications for important events and milestones during Claude Code execution",
+  "author": {
+    "name": "Jeremy Jacobs"
+  },
+  "keywords": ["notifications", "macos", "alerts", "desktop", "productivity"]
+}
