@@ -86,6 +86,31 @@ claude plugin install voice-updates@claude-comm-plugins
 
 ---
 
+### 🔔 [Apple Notifications](./plugins/apple-notifications/)
+
+**Category**: Productivity
+**Version**: 1.0.0
+**Platform**: macOS
+
+Send macOS desktop notifications for important events, milestones, or status updates without interrupting workflow. Surfaces critical information to the macOS Notification Center when users are away or multitasking.
+
+**Features**:
+- Desktop notifications for long-running operations
+- 5 notification categories (Completion, Discovery, Milestone, Attention, Error)
+- Category-specific sound cues (Glass, Funk, Purr, Basso)
+- Graceful fallback between terminal-notifier and osascript
+- Progressive disclosure documentation for token efficiency
+- Notable moments only (not routine operations)
+
+**Installation**:
+```bash
+claude plugin install apple-notifications@claude-comm-plugins
+```
+
+[Full Documentation →](./plugins/apple-notifications/README.md)
+
+---
+
 ## Repository Structure
 
 ```
@@ -99,7 +124,12 @@ claude-comm-plugins/
 │   │   ├── skills/
 │   │   ├── commands/
 │   │   └── README.md
-│   └── voice-updates/           # Voice Updates plugin
+│   ├── voice-updates/           # Voice Updates plugin
+│   │   ├── .claude-plugin/
+│   │   │   └── plugin.json
+│   │   ├── skills/
+│   │   └── README.md
+│   └── apple-notifications/     # Apple Notifications plugin
 │       ├── .claude-plugin/
 │       │   └── plugin.json
 │       ├── skills/
